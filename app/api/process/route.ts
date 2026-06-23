@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const outputBuffer = buildOutputWorkbook(buffer, weights);
 
-    return new NextResponse(outputBuffer, {
+    return new NextResponse(new Uint8Array(outputBuffer), {
       status: 200,
       headers: {
         "Content-Type":
